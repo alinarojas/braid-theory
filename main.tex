@@ -1,0 +1,89 @@
+% --------------------------
+% Document class
+% --------------------------
+\documentclass[
+A4paper,                % paper size A4
+twoside,                % onesite or twoside printing
+openany,              % doublepage cleaning ends up right side
+chapterprefix=true,     % prefix for chapter marks
+12pt,                   % font size
+headings=normal,        % size of headings
+titlepage=on            % own page for each title page
+]{book}
+
+% **************************************************
+% THESIS details
+% **************************************************
+
+\input{thesisDetails}
+
+% **************************************************
+% Settings
+% **************************************************
+
+\input{settings}
+
+% **************************************************
+% Begin document
+% **************************************************
+\begin{document}
+
+% --------------------------
+% Cover and front matter
+% --------------------------
+\frontmatter
+\pagestyle{empty}				    % no header nor footer
+\input{frontmatter/1_cover}
+\newpage
+
+\pagenumbering{roman}			    % roman page numbering 
+\pagestyle{plain}				    % empty header, just page number in footer
+
+\selectlanguage{spanish}
+
+\setcounter{tocdepth}{3}		% define depth of toc
+\tableofcontents				% display table of contents
+
+% \addcontentsline{toc}{section}{Lista de Figuras}
+% \listoffigures
+
+% \addcontentsline{toc}{section}{Lista de Tablas}
+% \listoftables
+
+\newpage
+
+% \input{frontmatter/7_acronyms}
+% \cleardoublepage
+
+% --------------------------
+% Main matter
+% --------------------------
+\mainmatter
+\pagenumbering{arabic}			% arabic page numbering
+\setcounter{page}{1}			% set page counter
+\pagestyle{fancy} 	            % fancy header and footer
+\parskip=7pt                    % space after each paragraph
+\parindent=0pt                  % suppress indentation of paragraphs
+
+
+% Capítulos
+\include{mainmatter/chapter1}
+\include{mainmatter/chapter2}
+\include{mainmatter/chapter3}
+
+\cleardoublepage
+
+% --------------------------
+% Back matter
+% --------------------------
+\backmatter
+\nocite{*}
+\printbibliography[title=Referencias, heading=bibintoc]
+
+% \appendix
+% \chapter{Anexos}  
+
+% **************************************************
+% End of document
+% **************************************************
+\end{document}
